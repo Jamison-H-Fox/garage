@@ -10,7 +10,7 @@ module.exports = {
 }
 
 function findById(id) {
-    return db('cars').where('id', id).first()
+    return db('cars').where('car_id', id).first()
 }
 
 function findAll() {
@@ -27,12 +27,12 @@ async function insertCar(car) {
 }
 
 async function updateCar(id, updates) {
-    await db('cars').where('id', id).update(updates)
+    await db('cars').where('car_id', id).update(updates)
     return findById(id)
 }
 
 async function deleteCar(id) {
     const deletedCar = await findById(id)
-    await db('cars').where('id', id).del()
+    await db('cars').where('car_id', id).del()
     return deletedCar;
 }

@@ -10,7 +10,7 @@ module.exports = {
   development: {
     ...common,
     connection: {
-      filename: './backend/data/wishlist.db3'
+      filename: './backend/data/garage.db3'
     }
   },
 };

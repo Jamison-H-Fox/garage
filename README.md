@@ -12,29 +12,58 @@
     - [ ] Garage page (carousel)
     - [ ] Logout
 - Controlled forms
+    - [ ] Yup validation schema
     - [ ] Order form in add page
     - [ ] Update form in garage page
 - Client side routing
     - [ ] Each page renders appropriately
 - Login and logout features
     - [ ] Login form bookends
-    - [ ] Login/Logout buttons change
+    - [ ] Logout confirmation w/ button to login again
+    - [ ] Login/Logout buttons change to match state
 - Redux store for state
     - [ ] Store all stuff from axios calls in state
 
 ### Back End:
 - API w/ router endpoints
-    - [ ] Get - Load all cars into garage on load of component
-    - [ ] Put - Update w/ form in garage
-    - [ ] Post - Order form in add page
-    - [ ] Delete - Remove car in garage
+    - /cars
+        - [ ] GET - Load all cars into garage on load of component
+        - [ ] PUT - Update w/ form in garage
+        - [ ] POST - Order form in add page
+        - [ ] DELETE - Remove car in garage
+    - /users
+        - [ ] POST - register
+        - [ ] POST - login
 - Middleware
-    - [ ] Clean data before submitting
+    - [ ] Clean username/password data before submitting
+    - [ ] Check username validity
+    - [ ] Restricted to block routes w/out authorization
 - Database structure
-    - [ ] Foreign keys to assign vehicle to user
+    - [x] Table for tracking vehicles
+        - [x] car_id (auto-incrementing)
+        - [x] user_id (required)
+        - [x] make (required)
+        - [x] model (required)
+        - [x] trim (required)
+        - [x] img_url (required)
+        - [x] price
+        - [x] build_url
+    - [ ] Table for tracking users
+        - [x] user_id (auto-incrementing)
+        - [x] username (required, unique)
+        - [x] password (required)
+        - [ ] session???
+    - [x] Foreign keys to assign vehicle to user
     - [ ] Users for session storage
-    - [ ] Table for tracking vehicles
 - Database access
+    - Users
+        - [ ] findBy(username) to verify existence
+        - [ ] add() to register new user
+    - Cars
+        - [ ] add() to add new car
+        - [ ] update() to modify existing car
+        - [ ] find() to find all cars matching user
+        - [ ] delete() to delete indicated car
     - [ ] db for basic CRUD stuff
     - [ ] seeds and migrations
 - Authentication and protected routes
