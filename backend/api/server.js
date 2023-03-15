@@ -3,6 +3,13 @@ const server = express();
 
 server.use(express.json());
 
+// this middleware fixes the 'Access-Control-Allow-Origin' bug
+// see https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 const carsRouter = require('./cars/carsRouter');
 const usersRouter = require('./users/usersRouter');
 

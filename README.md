@@ -4,19 +4,20 @@
 ## This project is intended to demonstrate the following features: 
 
 ### Front End:
+- Client side routing
+    - [ ] Each page renders appropriately
 - User interface
     - [ ] Maybe a spinner for loading???
     - [ ] Login form
     - [ ] Welcome page
     - [ ] Add new page
     - [ ] Garage page (carousel)
+        - [ ] CarCard components in carousel
     - [ ] Logout
 - Controlled forms
     - [ ] Yup validation schema
     - [ ] Order form in add page
     - [ ] Update form in garage page
-- Client side routing
-    - [ ] Each page renders appropriately
 - Login and logout features
     - [ ] Login form bookends
     - [ ] Logout confirmation w/ button to login again
