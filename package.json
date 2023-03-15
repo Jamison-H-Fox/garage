@@ -9,13 +9,30 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "express": "^4.18.2",
+    "knex": "^2.4.2",
+    "sqlite3": "^5.1.4",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.4.3",
+    "eslint": "^8.35.0",
+    "nodemon": "^2.0.21",
+    "supertest": "^6.3.3",
+    "@types/jest": "^29.4.0",
+    "cross-env": "^7.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon ./backend/index.js",
+    "rollback": "knex migrate:rollback",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run",
+    "resetdb": "npm run rollback && npm run migrate && npm run seed"
   },
   "eslintConfig": {
     "extends": [
