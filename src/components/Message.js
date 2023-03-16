@@ -4,13 +4,13 @@ import styled from "styled-components";
 const StyledSection = styled.section`
 `
 
-function Login(props) { // eslint-disable-line
+function Message(props) { // eslint-disable-line
 
     return (
         <StyledSection>
-            <h2>Login Component</h2>
+            <h2>Message Component</h2>
         </StyledSection>
     )
 }
 
-export default Login;
+export default Message;
