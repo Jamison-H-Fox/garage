@@ -1,7 +1,7 @@
 
 # Jamison's Dream Garage
 
-## This project is intended to demonstrate the following features: 
+This project is conceived by me (not from a tutorial) and built from scratch to showcase the following: 
 
 ### Front End:
 - Client side routing
