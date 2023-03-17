@@ -1,6 +1,11 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: aliceblue;
+    background-color: black;
+    background-image: url(https://cdn.carbuzz.com/gallery-images/2022-cadillac-ct5-v-blackwing-headlights-carbuzz-807347-1600.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 h2 {

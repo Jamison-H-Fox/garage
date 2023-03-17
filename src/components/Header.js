@@ -7,6 +7,15 @@ const StyledSection = styled.section`
     //     border: 1px red solid;
     // }
 
+    & .screen {
+        z-index: -10;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        background-color: white;
+        opacity: .4;
+    }
+
     & nav {
         position: fixed;
         width: 100%;
@@ -63,6 +72,7 @@ function Header(props) { // eslint-disable-line
                     <NavLink id='logoutScreen' to='/logout'>Logout</NavLink>
                 </div>
             </nav>
+            <div className="screen"></div>
         </StyledSection>
     )
 }

@@ -13,8 +13,8 @@ const StyledSection = styled.section`
     align-items: center;
 
     & .greeting {
-        margin-top: 15vh;
-        font-size: 2rem;
+        margin-top: 25vh;
+        font-size: 3rem;
     }
 
     & form {
@@ -25,13 +25,13 @@ const StyledSection = styled.section`
         width: 33%;
         padding: 2.5%;
         border-radius: 15px;
-        background-color: lemonchiffon;
+        background-color: #5a5a5a;
+        opacity: .95;
 
         & input {
             margin: 1%;
             width: 65%;
             height: 2.5rem;
-            opacity: .66;
             border: none;
         }
 
@@ -55,7 +55,7 @@ function Login(props) {
             <h2 className="greeting">Welcome to the Garage!</h2>
             <form id="loginForm" onSubmit={(evt) => onSubmit(evt)}> 
                 <input 
-                    placeholder="Username:"
+                    placeholder="username:"
                     id="username"
                 />
                 <input

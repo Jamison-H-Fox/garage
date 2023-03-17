@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledSection = styled.section`
-    margin-top: 10vh;
+    // margin-top: 10vh;
 `
 
 function Spinner(props) { // eslint-disable-line
