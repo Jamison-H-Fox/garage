@@ -15,7 +15,6 @@ function App() {
     <div className="App">
       <Spinner />
       <Header />
-      <h1>Hello World!!!</h1>
       <Message />
       <Routes>
         <Route path='/' element={<Login />} />

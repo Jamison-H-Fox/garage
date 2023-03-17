@@ -24,6 +24,7 @@ This project is conceived by me (not from a tutorial) and built from scratch to 
     - [ ] Login/Logout buttons change to match state
 - Redux store for state
     - [ ] Store all stuff from axios calls in state
+- Tool tips on hover
 
 ### Back End:
 - API w/ router endpoints
