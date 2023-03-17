@@ -44,7 +44,7 @@ const StyledSection = styled.section`
         margin-right: 5%;
         width: 33%;
         display: flex;
-        justify-content: space-around;
+        justify-content: flex-end;
 
         & a {
             text-decoration: none;
@@ -67,11 +67,18 @@ function Header(props) { // eslint-disable-line
                 <div className="logo" style={{backgroundImage:`url(https://logosmarcas.net/wp-content/uploads/2021/04/Cadillac-Logo.png)`}}>
                 </div>
                 <div className='links' >
-                    <NavLink id='loginScreen' to='/'>Login</NavLink>
-                    <NavLink id='welcomeScreen' to='/welcome'>Welcome</NavLink>
-                    <NavLink id='garageScreen' to='/garage'>Garage</NavLink>
-                    <NavLink id='addScreen' to='/add'>Add</NavLink>
-                    <NavLink id='logoutScreen' to='/logout'>{props.loggedIn ? 'Logout' : 'Login'}</NavLink>
+                    
+                    {
+                        props.loggedIn ?
+                        <>
+                            {/* <NavLink id='welcomeScreen' to='/welcome'>Welcome</NavLink> */}
+                            <NavLink id='garageScreen' to='/garage'>Garage</NavLink>
+                            <NavLink id='addScreen' to='/add'>Add</NavLink>
+                            <NavLink id='logoutScreen' to='/logout'>Logout</NavLink> 
+                        </> :
+                        <NavLink id='loginScreen' to='/'>Login</NavLink>
+                    }
+                    
                 </div>
             </nav>
             <div className="screen"></div>
