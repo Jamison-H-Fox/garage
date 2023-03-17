@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux"; 
+import {  } from "../actions";
 
 const StyledSection = styled.section`
     // & * {
@@ -69,7 +71,7 @@ function Header(props) { // eslint-disable-line
                     <NavLink id='welcomeScreen' to='/welcome'>Welcome</NavLink>
                     <NavLink id='garageScreen' to='/garage'>Garage</NavLink>
                     <NavLink id='addScreen' to='/add'>Add</NavLink>
-                    <NavLink id='logoutScreen' to='/logout'>Logout</NavLink>
+                    <NavLink id='logoutScreen' to='/logout'>{props.loggedIn ? 'Logout' : 'Login'}</NavLink>
                 </div>
             </nav>
             <div className="screen"></div>
@@ -77,4 +79,10 @@ function Header(props) { // eslint-disable-line
     )
 }
 
-export default Header;
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.loggedIn
+    }
+}
+
+export default connect(mapStateToProps, {  })(Header);

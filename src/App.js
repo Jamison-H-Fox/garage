@@ -13,18 +13,14 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 function App() {
   // navigation helpers:
   const navigate = useNavigate();
-  const redirectToWelcome = () => { navigate('/welcome') };
-
-  const login = () => {
-    redirectToWelcome();
-  }
+  
 
   return (
     <div className="App">
       <Spinner />
       <Header />
       <Routes>
-        <Route path='/' element={<Login login={login}/>} />
+        <Route path='/' element={<Login navigate={navigate}/>} />
         <Route path='/welcome' element={<Welcome />} />
         <Route path='/garage' element={<Garage />} />
         <Route path='/add' element={<Add />} />

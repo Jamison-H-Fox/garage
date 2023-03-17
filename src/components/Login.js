@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux"; 
+import { loginAction } from "../actions";
 import Message from "./Message";
 
 const StyledSection = styled.section`
@@ -47,6 +49,8 @@ const StyledSection = styled.section`
 function Login(props) {
     const [form, setForm] = useState({ username: '', password: '' })
 
+    const redirectToWelcome = () => { props.navigate('/welcome') };
+
     const handleChange = (evt) => {
         const { name, type, value, checked } = evt.target;
         const updatedInfo = type === 'checkbox' ? checked : value;
@@ -55,7 +59,9 @@ function Login(props) {
 
     const onSubmit = (evt) => {
         evt.preventDefault();
-        props.login();
+        props.loginAction();
+        redirectToWelcome();
+        setForm({ username: '', password: '' });
     }
 
     return (
@@ -79,5 +85,12 @@ function Login(props) {
         </StyledSection>
     )
 }
+// started messing with conditional rendering of links based on loggedIn state
 
-export default Login;
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.loggedIn
+    }
+}
+
+export default connect(mapStateToProps, { loginAction, })(Login);
