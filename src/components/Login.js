@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Message from "./Message";
 
@@ -45,6 +45,14 @@ const StyledSection = styled.section`
 `
 
 function Login(props) {
+    const [form, setForm] = useState({ username: '', password: '' })
+
+    const handleChange = (evt) => {
+        const { name, type, value, checked } = evt.target;
+        const updatedInfo = type === 'checkbox' ? checked : value;
+        setForm({ ...form, [name]: updatedInfo })
+    }
+
     const onSubmit = (evt) => {
         evt.preventDefault();
         props.login();
@@ -56,12 +64,14 @@ function Login(props) {
             <form id="loginForm" onSubmit={(evt) => onSubmit(evt)}> 
                 <input 
                     placeholder="username:"
-                    id="username"
+                    name='username'
+                    onChange={(evt) => handleChange(evt)}
                 />
                 <input
                     placeholder="password:"
+                    name='password'
                     type='password'
-                    id='password'
+                    onChange={(evt) => handleChange(evt)}
                 />
                 <button onClick={(evt) => onSubmit(evt)}>Login</button>
             </form>
