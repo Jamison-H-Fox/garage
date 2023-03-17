@@ -26,7 +26,7 @@ const StyledSection = styled.section`
         padding: 2.5%;
         border-radius: 15px;
         background-color: #5a5a5a;
-        opacity: .95;
+        opacity: .75;
 
         & input {
             margin: 1%;
