@@ -1,4 +1,4 @@
-import { LOGIN } from '../actions';
+import { LOGIN, LOGOUT } from '../actions';
 
 const initialState = {
     loggedIn: false,
@@ -8,10 +8,14 @@ const initialState = {
 function reducer(state = initialState, action) {
     switch(action.type) {
         case LOGIN:
-            console.log('hello from LOGIN reducer')
             return {
                 ...state,
                 loggedIn: true
+            }
+        case LOGOUT:
+            return {
+                ...state,
+                loggedIn: false
             }
         default:
             return state;

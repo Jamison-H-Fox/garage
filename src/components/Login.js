@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { connect } from "react-redux"; 
+import { connect } from "react-redux";
 import { loginAction } from "../actions";
 import Message from "./Message";
 
@@ -85,7 +85,6 @@ function Login(props) {
         </StyledSection>
     )
 }
-// started messing with conditional rendering of links based on loggedIn state
 
 const mapStateToProps = state => {
     return {

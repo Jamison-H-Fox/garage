@@ -21,10 +21,10 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Login navigate={navigate}/>} />
-        <Route path='/welcome' element={<Welcome />} />
+        <Route path='/welcome' element={<Welcome navigate={navigate}/>} />
         <Route path='/garage' element={<Garage />} />
         <Route path='/add' element={<Add />} />
-        <Route path='/logout' element={<Logout />} />
+        <Route path='/logout' element={<Logout navigate={navigate}/>} />
       </Routes>
       
     </div>

@@ -2,10 +2,16 @@ import axios from "axios"; // eslint-disable-line
 
 
 export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 
 export const loginAction = () => {
-    console.log('hello from login action')
     return {
         type: LOGIN
+    }
+}
+
+export const logoutAction = () => {
+    return {
+        type: LOGOUT
     }
 }
