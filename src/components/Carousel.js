@@ -20,9 +20,7 @@ const StyledSection = styled.section`
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        height: 70vh;
-        background-color: green;
-        color: #fff;
+        height: 65vh;
     }
 
     & .indicators {
@@ -30,11 +28,12 @@ const StyledSection = styled.section`
         justify-content: center;
 
         & button {
-            margin: 5px;
+            margin-top: 1.25%;
+            margin-right: 0.25%;
         }
 
         & button.active {
-            background-color: green;
+            background-color: #282828;
             color: #fff;
         }
     }

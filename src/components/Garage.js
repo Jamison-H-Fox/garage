@@ -26,6 +26,18 @@ const StyledSection = styled.section`
         background-color: #5a5a5a;
         opacity: .95;
     }
+
+    & .button-container {
+        margin-top: 1.25%;
+        width: 33%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        & button {
+            margin-right: 1.25%;
+        }
+    }
 `
 
 function Garage(props) {
@@ -33,15 +45,24 @@ function Garage(props) {
         props.loadGarageAction();
     }, []) // eslint-disable-line
 
+    const redirectToAdd = () => { props.navigate('/add') };
+
+    const handleClick = () => {
+        redirectToAdd();
+    }
 
     return (
         <StyledSection>
             <div className="container">
                 <Carousel>
-                    {props.garage.map(element => {
-                        return <CarouselItem><CarCard car={element} /></CarouselItem>
+                    {props.garage.map((element, index) => {
+                        return <CarouselItem key={1000 - index}><CarCard key={index} car={element} /></CarouselItem>
                     })}
                 </Carousel>
+                <div className="button-container">
+                    <button onClick={ () => handleClick() }>Add New Car</button>
+                    <button>Update Car</button>
+                </div>
             </div>
         </StyledSection>
     )

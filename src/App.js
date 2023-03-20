@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login navigate={navigate}/>} />
         <Route path='/welcome' element={<Welcome navigate={navigate}/>} />
-        <Route path='/garage' element={<Garage />} />
+        <Route path='/garage' element={<Garage navigate={navigate}/>} />
         <Route path='/add' element={<Add />} />
         <Route path='/logout' element={<Logout navigate={navigate}/>} />
       </Routes>

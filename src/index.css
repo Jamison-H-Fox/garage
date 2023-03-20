@@ -11,3 +11,9 @@ body {
 h2 {
     text-align: center;
 }
+
+#test {
+    color: rgb(222, 216, 207);
+    text-align: left;
+    background-position: center;
+}

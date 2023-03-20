@@ -72,8 +72,8 @@ function Header(props) { // eslint-disable-line
                         props.loggedIn ?
                         <>
                             {/* <NavLink id='welcomeScreen' to='/welcome'>Welcome</NavLink> */}
+                            <NavLink id='addScreen' to='/welcome'>Welcome</NavLink>
                             <NavLink id='garageScreen' to='/garage'>Garage</NavLink>
-                            <NavLink id='addScreen' to='/add'>Add</NavLink>
                             <NavLink id='logoutScreen' to='/logout'>Logout</NavLink> 
                         </> :
                         <NavLink id='loginScreen' to='/'>Login</NavLink>
