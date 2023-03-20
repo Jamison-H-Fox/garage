@@ -19,7 +19,6 @@ function reducer(state = initialState, action) {
                 loggedIn: false
             }
         case LOADGARAGE:
-            console.log('loadGarage reducer in progress')
             return {
                 ...state,
                 garage: action.payload,

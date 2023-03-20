@@ -27,24 +27,20 @@ const StyledSection = styled.section`
         opacity: .95;
     }
 `
-// set up db call on load
-// pass res into redux store
-// render a bunch of car components w/ res data
 
-function Garage(props) { // eslint-disable-line
+function Garage(props) {
     useEffect(() => {
-        console.log('useEffect in progress')
         props.loadGarageAction();
-    }, [])
+    }, []) // eslint-disable-line
+
 
     return (
         <StyledSection>
             <div className="container">
                 <Carousel>
-
-                    <CarouselItem><CarCard /></CarouselItem>
-                    <CarouselItem>Item 2</CarouselItem>
-                    <CarouselItem>Item 3</CarouselItem>
+                    {props.garage.map(element => {
+                        return <CarouselItem><CarCard car={element} /></CarouselItem>
+                    })}
                 </Carousel>
             </div>
         </StyledSection>

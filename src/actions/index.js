@@ -18,8 +18,6 @@ export const logoutAction = () => {
 }
 
 export const loadGarageAction = () => dispatch => {
-    console.log('loadGarageAction in process')
-    
     axios.get('http://172.29.207.149:9000/api/cars')
     .then(res => {
         const garage = res.data;
