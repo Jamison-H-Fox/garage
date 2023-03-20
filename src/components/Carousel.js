@@ -16,6 +16,7 @@ const StyledSection = styled.section`
     }
 
     & .carousel-item {
+        border-radius: 15px;
         display: inline-flex;
         align-items: center;
         justify-content: center;

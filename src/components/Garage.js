@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { loadGarageAction } from "../actions";
 import { CarCard } from "./";
 import Carousel, { CarouselItem } from './Carousel';
-
 
 const StyledSection = styled.section`
     // & * {
@@ -26,14 +27,22 @@ const StyledSection = styled.section`
         opacity: .95;
     }
 `
+// set up db call on load
+// pass res into redux store
+// render a bunch of car components w/ res data
 
 function Garage(props) { // eslint-disable-line
+    useEffect(() => {
+        console.log('useEffect in progress')
+        props.loadGarageAction();
+    }, [])
 
     return (
         <StyledSection>
             <div className="container">
                 <Carousel>
-                    <CarouselItem>Item 1</CarouselItem>
+
+                    <CarouselItem><CarCard /></CarouselItem>
                     <CarouselItem>Item 2</CarouselItem>
                     <CarouselItem>Item 3</CarouselItem>
                 </Carousel>
@@ -42,4 +51,11 @@ function Garage(props) { // eslint-disable-line
     )
 }
 
-export default Garage;
+const mapStateToProps = (state) => {
+    return {
+        loggedIn: state.loggedIn,
+        garage: state.garage,
+    }
+}
+
+export default connect(mapStateToProps, { loadGarageAction })(Garage);
