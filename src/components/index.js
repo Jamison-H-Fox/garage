@@ -1,5 +1,6 @@
 export { default as CarCard } from './CarCard';
 export { default as Add } from './Add';
+export { default as Update } from './Update';
 export { default as Garage } from './Garage';
 export { default as Login } from './Login';
 export { default as Logout } from './Logout';

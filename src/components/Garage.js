@@ -46,9 +46,14 @@ function Garage(props) {
     }, []) // eslint-disable-line
 
     const redirectToAdd = () => { props.navigate('/add') };
+    const redirectToUpdate = () => { props.navigate('/update') };
 
-    const handleClick = () => {
+    const addClick = () => {
         redirectToAdd();
+    }
+
+    const updateClick = () => {
+        redirectToUpdate();
     }
 
     return (
@@ -60,8 +65,8 @@ function Garage(props) {
                     })}
                 </Carousel>
                 <div className="button-container">
-                    <button onClick={ () => handleClick() }>Add New Car</button>
-                    <button>Update Car</button>
+                    <button onClick={ () => addClick() }>Add New Car</button>
+                    <button onClick={ () => updateClick() }>Update Car</button>
                 </div>
             </div>
         </StyledSection>
