@@ -1,9 +1,10 @@
-import { LOGIN, LOGOUT, LOADGARAGE } from '../actions';
+import { LOGIN, LOGOUT, LOAD_GARAGE } from '../actions';
 
 const initialState = {
     loggedIn: false,
     message: '',
     garage: [],
+    activeIndex: 0,
 }
 
 function reducer(state = initialState, action) {
@@ -18,7 +19,7 @@ function reducer(state = initialState, action) {
                 ...state,
                 loggedIn: false
             }
-        case LOADGARAGE:
+        case LOAD_GARAGE:
             return {
                 ...state,
                 garage: action.payload,

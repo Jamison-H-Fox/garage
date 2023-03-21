@@ -1,6 +1,7 @@
-import React, {  } from "react";
-
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
+import { updateIndexAction } from "../actions";
 
 const StyledSection = styled.section`
     width: 100%;
@@ -47,8 +48,18 @@ export const CarouselItem = ({ children, width }) => {
     );
 };
 
-const Carousel = ({ children, updateIndex, activeIndex }) => {
-    
+const Carousel = ({ children }) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const updateIndex = (newIndex) => {
+        if (newIndex < 0) {
+            newIndex = 0;
+        } else if (newIndex >= React.Children.count(children)) {
+            newIndex = React.Children.count(children) - 1;
+        }
+
+        setActiveIndex(newIndex);
+    };
 
 
     return (
@@ -89,4 +100,10 @@ const Carousel = ({ children, updateIndex, activeIndex }) => {
     )
 }
 
-export default Carousel;
+const mapStateToProps = state => {
+    return {
+        activeIndex: state.activeIndex
+    }
+}
+
+export default connect(mapStateToProps, { updateIndexAction })(Carousel);

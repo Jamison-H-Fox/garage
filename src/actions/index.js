@@ -1,9 +1,9 @@
 import axios from "axios";
 
-
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
-export const LOADGARAGE = 'LOADGARAGE';
+export const LOAD_GARAGE = 'LOAD_GARAGE';
+export const UPDATE_INDEX = 'UPDATE_INDEX';
 
 export const loginAction = () => {
     return {
@@ -18,16 +18,24 @@ export const logoutAction = () => {
 }
 
 export const loadGarageAction = () => dispatch => {
-    axios.get('http://172.29.207.149:9000/api/cars')
+    axios.get('https://garage-backend.herokuapp.com/api/cars')
     .then(res => {
         const garage = res.data;
-        dispatch({ type: LOADGARAGE, payload: garage })        
+        dispatch({ type: LOAD_GARAGE, payload: garage })        
     })
     .catch(err => {
         console.error(err)
     })
 
     return {
-        type: LOADGARAGE
+        type: LOAD_GARAGE
     }
+}
+
+export const updateIndexAction = (newIndex) => dispatch => {
+    // if (newIndex < 0) {
+    //     newIndex = 0;
+    // } else if (newIndex >= React.Children.count(children)) {
+    //     newIndex = React.Children.count(children) - 1;
+    // }
 }
