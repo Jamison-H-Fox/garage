@@ -1,7 +1,7 @@
 
 # Jamison's Dream Garage
 
-This project is conceived by me (not from a tutorial) and built from scratch to showcase the following: 
+This project is conceived by me (not from a tutorial) and built from scratch to showcase the following:
 
 ### Front End:
 - Client side routing
@@ -20,9 +20,9 @@ This project is conceived by me (not from a tutorial) and built from scratch to 
     - [ ] Add form in add page
     - [ ] Update form in update page
 - Login and logout features
-    - [ ] Login form bookends
-    - [ ] Logout confirmation w/ button to login again
-    - [ ] Login/Logout buttons change to match state
+    - [ ] Login form visible if not logged in
+    - [x] Logout confirmation w/ button to login again
+    - [x] Login/Logout buttons change to match state
 - Redux store for state
     - [ ] Store all stuff from axios calls in state
 - Tool tips on hover???

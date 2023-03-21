@@ -56,6 +56,10 @@ function Garage(props) {
         redirectToUpdate();
     }
 
+    const deleteClick = () => {
+        console.log('delete click under construction')
+    }
+
     return (
         <StyledSection>
             <div className="container">
@@ -67,6 +71,7 @@ function Garage(props) {
                 <div className="button-container">
                     <button onClick={ () => addClick() }>Add New Car</button>
                     <button onClick={ () => updateClick() }>Update Car</button>
+                    <button onClick={ () => deleteClick() }>Delete Car</button>
                 </div>
             </div>
         </StyledSection>
