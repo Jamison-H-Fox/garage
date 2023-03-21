@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { loadGarageAction } from "../actions";
@@ -41,6 +41,18 @@ const StyledSection = styled.section`
 `
 
 function Garage(props) {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const updateIndex = (newIndex) => {
+        if (newIndex < 0) {
+            newIndex = 0;
+        } else if (newIndex >= props.garage.length) {
+            newIndex = props.garage.length - 1;
+        }
+
+        setActiveIndex(newIndex);
+    };
+
     useEffect(() => {
         props.loadGarageAction();
     }, []) // eslint-disable-line
@@ -63,7 +75,7 @@ function Garage(props) {
     return (
         <StyledSection>
             <div className="container">
-                <Carousel>
+                <Carousel updateIndex={updateIndex} activeIndex={activeIndex}>
                     {props.garage.map((element, index) => {
                         return <CarouselItem key={1000 - index}><CarCard key={index} car={element} /></CarouselItem>
                     })}

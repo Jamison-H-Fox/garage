@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  } from "react";
 
 import styled from "styled-components";
 
@@ -47,18 +47,8 @@ export const CarouselItem = ({ children, width }) => {
     );
 };
 
-const Carousel = ({ children }) => {
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    const updateIndex = (newIndex) => {
-        if (newIndex < 0) {
-            newIndex = 0;
-        } else if (newIndex >= React.Children.count(children)) {
-            newIndex = React.Children.count(children) - 1;
-        }
-
-        setActiveIndex(newIndex);
-    };
+const Carousel = ({ children, updateIndex, activeIndex }) => {
+    
 
 
     return (

@@ -24,8 +24,8 @@ function App() {
         <Route path='/' element={<Login navigate={navigate}/>} />
         <Route path='/welcome' element={<Welcome navigate={navigate}/>} />
         <Route path='/garage' element={<Garage navigate={navigate}/>} />
-        <Route path='/add' element={<Add />} />
-        <Route path='/update' element={<Update />} />
+        <Route path='/add' element={<Add navigate={navigate}/>} />
+        <Route path='/update' element={<Update navigate={navigate}/>} />
         <Route path='/logout' element={<Logout navigate={navigate}/>} />
       </Routes>
     </div>
@@ -33,3 +33,7 @@ function App() {
 }
 
 export default App;
+
+// Create updateIndex action & reducer
+// Call that action in garage onClick
+// Make activeIndex available to Update through store
