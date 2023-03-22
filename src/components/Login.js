@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { loginAction, registerAction } from "../actions";
-import Message from "./Message";
 
 const StyledSection = styled.section`
     // & * {
@@ -30,6 +29,13 @@ const StyledSection = styled.section`
         background-color: #5a5a5a;
         opacity: .75;
 
+        & .button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+
         & input {
             margin: 1%;
             width: 65%;
@@ -40,7 +46,7 @@ const StyledSection = styled.section`
         & button {
             font-size: 1rem;
             width: 20%;
-            margin-top: 2.5%;
+            margin: 2.5% 1% 0 1%;
 
         }
     }
@@ -90,10 +96,11 @@ function Login(props) {
                     value={form.password}
                     onChange={(evt) => handleChange(evt)}
                 />
-                <button onClick={(evt) => login(evt)}>Login</button>
-                <button onClick={(evt) => register(evt)}>Register</button>
+                <div className="button-container">
+                    <button onClick={(evt) => login(evt)}>Login</button>
+                    <button onClick={(evt) => register(evt)}>Register</button>
+                </div>
             </form>
-            <Message />
         </StyledSection>
     )
 }

@@ -13,7 +13,5 @@ h2 {
 }
 
 #test {
-    color: rgb(222, 216, 207);
-    text-align: left;
-    background-position: center;
+    font-size: 10rem;
 }

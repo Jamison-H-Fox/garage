@@ -6,6 +6,5 @@ export { default as Login } from './Login';
 export { default as Logout } from './Logout';
 export { default as Spinner } from './Spinner';
 export { default as Welcome } from './Welcome';
-export { default as Message } from './Message';
 export { default as Header } from './Header';
 export { default as Carousel } from './Carousel';

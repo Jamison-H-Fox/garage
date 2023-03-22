@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { logoutAction } from '../actions';
-import Message from './Message';
 
 const StyledSection = styled.section`
     // & * {
@@ -71,7 +70,6 @@ function Logout(props) {
                     <button onClick={() => redirectToGarage()}>Cancel</button>
                 </div>
             </div>
-            <Message />
         </StyledSection>
     )
 }

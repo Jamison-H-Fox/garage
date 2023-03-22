@@ -57,8 +57,7 @@ function Garage(props) {
     }
 
     const deleteClick = () => {
-        console.log(props.activeIndex);
-        deleteCarAction(props.activeIndex);
+        props.deleteCarAction(props.activeIndex);
     }
 
     return (

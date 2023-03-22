@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { updateCarAction } from "../actions";
 
 const StyledSection = styled.section`
 // & * {
@@ -46,15 +47,28 @@ const StyledSection = styled.section`
         }
     }
 
-    & .button-container {
-        margin-top: 1.25%;
-        width: 33%;
+    & .bottom-container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
 
-        & button {
-            margin-right: 1.25%;
+        & .button-container {
+            margin-top: 10%;
+            width: 33%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+    
+            & button {
+                margin: 0 5% 0 5%;
+            }
+        }
+
+        & h2 {
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 5%;
         }
     }
 
@@ -91,7 +105,8 @@ function Update(props) {
     const redirectToGarage = () => { props.navigate('/garage') }
 
     const updateCar = () => {
-        console.log('update car button nub')
+        props.updateCarAction()
+        redirectToGarage();
     }
 
     const handleChange = (evt) => {
@@ -157,9 +172,12 @@ function Update(props) {
                         ></input>
                     </form>
                 </div>
-                <div className="button-container">
-                    <button onClick={ () => updateCar() }>Submit</button>
-                    <button onClick={ () => redirectToGarage() }>Cancel</button>
+                <div className="bottom-container">
+                    <div className="button-container">
+                        <button onClick={ () => updateCar() }>Submit</button>
+                        <button onClick={ () => redirectToGarage() }>Cancel</button>
+                    </div>
+                    <h2>Update Car</h2>
                 </div>
             </div>
         </StyledSection>
@@ -173,4 +191,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {  })(Update);
+export default connect(mapStateToProps, { updateCarAction, })(Update);
