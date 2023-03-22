@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { loginAction } from "../actions";
+import { loginAction, registerAction } from "../actions";
 import Message from "./Message";
 
 const StyledSection = styled.section`
@@ -66,7 +66,8 @@ function Login(props) {
 
     const register = (evt) => {
         evt.preventDefault();
-        console.log('register button nub')
+        props.registerAction();
+        login(evt);
     }
 
     return (
@@ -103,4 +104,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { loginAction, })(Login);
+export default connect(mapStateToProps, { loginAction, registerAction })(Login);

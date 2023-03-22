@@ -33,9 +33,3 @@ function App() {
 }
 
 export default App;
-
-// Create updateIndex action & reducer
-// Store activeIndex logic locally at Carousel component
-// Call updateIndex action in garage onClick and pass in activeIndex
-// Make activeIndex available to Update through store
-// Populate Update form w/ appropriate state from store

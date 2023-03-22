@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
@@ -86,10 +86,18 @@ const StyledSection = styled.section`
 `
 
 function Update(props) {
+    const [form, setForm] = useState(props.garage[props.activeIndex])
+
     const redirectToGarage = () => { props.navigate('/garage') }
 
     const updateCar = () => {
         console.log('update car button nub')
+    }
+
+    const handleChange = (evt) => {
+        const { name, type, value, checked } = evt.target;
+        const updatedInfo = type === 'checkbox' ? checked : value;
+        setForm({ ...form, [name]: updatedInfo })
     }
 
     return (
@@ -97,22 +105,56 @@ function Update(props) {
             <div className="big-container">
                 <div className="small-container">
                     <form className="car-info">
-                        <p>Test:</p>
-                        <input></input>
                         <p>Make:</p>
-                        <input></input>
+                        <input
+                            type='text'
+                            id="make-input"
+                            name='make'
+                            value={form.make ? form.make : ''}
+                            onChange={(evt) => handleChange(evt)}
+                        ></input>
                         <p>Model:</p>
-                        <input></input>
+                        <input
+                            type='text'
+                            id="model-input"
+                            name='model'
+                            value={form.model ? form.model : ''}
+                            onChange={(evt) => handleChange(evt)}
+                        ></input>
                         <p>Trim:</p>
-                        <input></input>
+                        <input
+                            type='text'
+                            id="trim-input"
+                            name='trim'
+                            value={form.trim ? form.trim : ''}
+                            onChange={(evt) => handleChange(evt)}
+                        ></input>
                         <p>Price:</p>
-                        <input></input>
+                        <input
+                            type='text'
+                            id="price-input"
+                            name='price'
+                            value={form.price ? form.price : ''}
+                            onChange={(evt) => handleChange(evt)}
+                        ></input>
                         <p>Build Link:</p>
-                        <input></input>
+                        <input
+                            type='text'
+                            id="build_url-input"
+                            name='build_url'
+                            value={form.build_url ? form.build_url : ''}
+                            onChange={(evt) => handleChange(evt)}
+                        ></input>
                     </form>
                     <form className="car-image">
                         <p>img_url:</p>
-                        <input></input>
+                        <input
+                            type='text'
+                            id="img_url-input"
+                            name='img_url'
+                            value={form.img_url ? form.img_url : ''}
+                            onChange={(evt) => handleChange(evt)}
+                        ></input>
                     </form>
                 </div>
                 <div className="button-container">
