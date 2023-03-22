@@ -13,5 +13,6 @@ h2 {
 }
 
 #test {
-    font-size: 10rem;
+    color: rgb(255, 207, 207);
+    font-weight: bold;
 }

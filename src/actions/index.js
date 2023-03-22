@@ -4,14 +4,20 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const LOAD_GARAGE = 'LOAD_GARAGE';
 export const UPDATE_INDEX = 'UPDATE_INDEX';
+export const SET_ERRORS = 'SET_ERRORS';
 
 export const updateIndexAction = (newIndex) => dispatch => {
     dispatch({ type: UPDATE_INDEX, payload: newIndex });
 }
 
-export const loginAction = (/* need user info */) => {
+export const setErrorsAction = (errors) => dispatch => {
+    dispatch({ type: SET_ERRORS, payload: errors });
+}
+
+export const loginAction = (userCreds) => {
     // axios call to get session info
     console.log('hello from login action')
+    console.log('userCreds in login action: ', userCreds)
     return {
         type: LOGIN
     }
@@ -25,10 +31,10 @@ export const logoutAction = (/* need user info */) => {
     }
 }
 
-export const registerAction = (/* need user info */) => dispatch => {
+export const registerAction = (userCreds) => dispatch => {
     // axios call to post new user
     console.log('hello from register action');
-    dispatch(loginAction(/* need user info */));
+    dispatch(loginAction(userCreds));
 }
 
 export const loadGarageAction = () => dispatch => {

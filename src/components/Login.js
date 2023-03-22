@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { loginAction, registerAction } from "../actions";
+import * as yup from 'yup';
 
 const StyledSection = styled.section`
     // & * {
@@ -30,10 +31,11 @@ const StyledSection = styled.section`
         opacity: .75;
 
         & .button-container {
-            display: flex;
+            display: inline-flex;
             flex-direction: row;
             justify-content: center;
-            width: 100%;
+            // width: 100%;
+            align-items: center;
         }
 
         & input {
@@ -45,36 +47,101 @@ const StyledSection = styled.section`
 
         & button {
             font-size: 1rem;
-            width: 20%;
-            margin: 2.5% 1% 0 1%;
+            width: fit-content;
+            margin: 2.5%;
+        }
 
+        & .error-message {
+            font-weight: bold;
+            border-radius: 15px;
+            border: 2px red solid;
+            color: red;
+            background-color: rgb(255, 207, 207);
+            padding: 1.25%;
         }
     }
 `
 
+const schema = yup.object().shape({
+    username: yup.string().required('username is required').min(3, 'username must be at least 3 characters'),
+    password: yup.string().required('password is required').min(4, 'password must be at least 4 characters')
+})
+
 function Login(props) {
-    const [form, setForm] = useState({ username: '', password: '' })
+    // tooltip hover-over helpers //
+    const [mouseLocation, setMouseLocation] = useState(0);
+    const [visible, setVisible] = useState(false);
+
+    const handleHover = (evt) => {
+        setMouseLocation({
+            x: evt.pageX,
+            y: evt.pageY,
+        });
+        setVisible(true);
+    };
+      
+    const handleNoHover = () => {
+        setVisible(false);
+    };
+    ////////////////////////////////
+
+    const [form, setForm] = useState({ username: '', password: '' });
+    const [errors, setErrors] = useState({ username: '', password: '' });
+    const [disabled, setDisabled] = useState(true);
 
     const redirectToWelcome = () => { props.navigate('/welcome') };
 
     const handleChange = (evt) => {
         const { name, type, value, checked } = evt.target;
         const updatedInfo = type === 'checkbox' ? checked : value;
-        setForm({ ...form, [name]: updatedInfo })
+        setForm({ ...form, [name]: updatedInfo });
+        setFormErrors(name, updatedInfo);
+    }
+
+    function setFormErrors(name, value) {
+        yup.reach(schema, name).validate(value)
+            .then(() => setErrors({ ...errors, [name]: '' }))
+            .catch(err => setErrors({ ...errors, [name]: err.errors[0] }))
+    }
+
+    function errorChecker() {
+        const reference = { username: '', password: '' };
+        if(JSON.stringify(errors) !== JSON.stringify(reference)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     const login = (evt) => {
         evt.preventDefault();
-        props.loginAction();
+
+        const userCreds = {
+            username: form.username.trim(),
+            password: form.password.trim()
+        }
+
+        props.loginAction(userCreds);
         redirectToWelcome();
         setForm({ username: '', password: '' });
     }
 
     const register = (evt) => {
         evt.preventDefault();
-        props.registerAction();
-        login(evt);
+
+        const userCreds = {
+            username: form.username.trim(),
+            password: form.password.trim()
+        }
+
+        props.registerAction(userCreds);
+        redirectToWelcome();
+        setForm({ username: '', password: '' });
     }
+
+    useEffect (() => {
+        schema.isValid(form).then(valid => setDisabled(!valid))
+    }, [form, disabled])
 
     return (
         <StyledSection>
@@ -96,9 +163,29 @@ function Login(props) {
                     value={form.password}
                     onChange={(evt) => handleChange(evt)}
                 />
-                <div className="button-container">
-                    <button onClick={(evt) => login(evt)}>Login</button>
-                    <button onClick={(evt) => register(evt)}>Register</button>
+                <div 
+                    className="button-container"
+                    onMouseEnter={evt => handleHover(evt)}
+                    onMouseLeave={handleNoHover}
+                >
+                    {
+                        errorChecker() ?
+                        <div
+                            className="error-message"
+                            style={{
+                            display: visible ? "block" : "none",
+                            position: 'fixed',
+                            top: mouseLocation.y,
+                            left: mouseLocation.x,
+                            }}
+                        >
+                            <h2>{errors.username}</h2>
+                            <h2>{errors.password}</h2>
+                        </div> :
+                        <></>
+                    }
+                    <button disabled={disabled} onClick={(evt) => login(evt)}>Login</button>
+                    <button disabled={disabled} onClick={(evt) => register(evt)}>Register</button>
                 </div>
             </form>
         </StyledSection>
