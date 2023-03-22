@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { loadGarageAction } from "../actions";
+import { loadGarageAction, deleteCarAction } from "../actions";
 import { CarCard } from "./";
 import Carousel, { CarouselItem } from './Carousel';
 
@@ -57,7 +57,8 @@ function Garage(props) {
     }
 
     const deleteClick = () => {
-        console.log('delete click under construction')
+        console.log(props.activeIndex);
+        deleteCarAction(props.activeIndex);
     }
 
     return (
@@ -82,7 +83,8 @@ const mapStateToProps = (state) => {
     return {
         loggedIn: state.loggedIn,
         garage: state.garage,
+        activeIndex: state.activeIndex,
     }
 }
 
-export default connect(mapStateToProps, { loadGarageAction })(Garage);
+export default connect(mapStateToProps, { loadGarageAction, deleteCarAction })(Garage);

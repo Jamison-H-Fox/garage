@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const LOGIN = 'LOGIN';
-export const REGISTER_USER = 'REGISTER_USER';
 export const LOGOUT = 'LOGOUT';
 export const LOAD_GARAGE = 'LOAD_GARAGE';
 export const UPDATE_INDEX = 'UPDATE_INDEX';
@@ -11,12 +10,14 @@ export const updateIndexAction = (newIndex) => dispatch => {
 }
 
 export const loginAction = (/* need user info */) => {
+    console.log('hello from login action')
     return {
         type: LOGIN
     }
 }
 
 export const logoutAction = (/* need user info */) => {
+    console.log('hello from logout action')
     return {
         type: LOGOUT
     }
@@ -29,6 +30,7 @@ export const registerAction = (/* need user info */) => dispatch => {
 }
 
 export const loadGarageAction = () => dispatch => {
+    console.log('hello from load garage action')
     axios.get('https://garage-backend.herokuapp.com/api/cars')
     .then(res => {
         const garage = res.data;

@@ -19,7 +19,7 @@ const StyledSection = styled.section`
         font-size: 3rem;
     }
 
-    & form {
+    & .logout-div {
         margin-top: 45vh;
         display: flex;
         flex-direction: column;
@@ -35,12 +35,19 @@ const StyledSection = styled.section`
             margin-bottom: 5%;
             font-size: 1.5rem;
         }
+
+        & .button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
     }
     
     & button {
         font-size: 1rem;
-        // width: 25%;
-        margin-top: 1%;
+        width: 20%;
+        margin: 1%;
 
     }
 
@@ -48,19 +55,22 @@ const StyledSection = styled.section`
 
 function Logout(props) {
     const redirectToLogin = () => { props.navigate('/') };
+    const redirectToGarage = () => { props.navigate('/garage')};
 
-    const onSubmit = (evt) => {
-        evt.preventDefault();
+    const logout = () => {
         props.logoutAction();
         redirectToLogin();
     }
 
     return (
         <StyledSection>
-            <form onSubmit={(evt) => onSubmit(evt)} className="logoutForm">
+            <div className="logout-div">
                 <h2>Are you sure you want to log out?</h2>
-                <button>Log Out</button>
-            </form>
+                <div className="button-container">
+                    <button onClick={() => logout()}>Log Out</button>
+                    <button onClick={() => redirectToGarage()}>Cancel</button>
+                </div>
+            </div>
             <Message />
         </StyledSection>
     )
