@@ -39,8 +39,8 @@ const StyledSection = styled.section`
 
         & button {
             font-size: 1rem;
-            // width: 25%;
-            margin-top: 1%;
+            width: 20%;
+            margin-top: 2.5%;
 
         }
     }
@@ -57,17 +57,22 @@ function Login(props) {
         setForm({ ...form, [name]: updatedInfo })
     }
 
-    const onSubmit = (evt) => {
+    const login = (evt) => {
         evt.preventDefault();
         props.loginAction();
         redirectToWelcome();
         setForm({ username: '', password: '' });
     }
 
+    const register = (evt) => {
+        evt.preventDefault();
+        console.log('register button nub')
+    }
+
     return (
         <StyledSection>
             <h2 className="greeting">Welcome to the Garage!</h2>
-            <form id="loginForm" onSubmit={(evt) => onSubmit(evt)}> 
+            <form id="loginForm" onSubmit={(evt) => login(evt)}> 
                 <input 
                     placeholder="username:"
                     name='username'
@@ -79,7 +84,8 @@ function Login(props) {
                     type='password'
                     onChange={(evt) => handleChange(evt)}
                 />
-                <button onClick={(evt) => onSubmit(evt)}>Login</button>
+                <button onClick={(evt) => login(evt)}>Login</button>
+                <button onClick={(evt) => register(evt)}>Register</button>
             </form>
             <Message />
         </StyledSection>

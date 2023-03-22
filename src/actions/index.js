@@ -38,4 +38,7 @@ export const updateIndexAction = (newIndex) => dispatch => {
     // } else if (newIndex >= React.Children.count(children)) {
     //     newIndex = React.Children.count(children) - 1;
     // }
+
+    // handle logic in the component
+    // just push the newIndex to the action
 }
