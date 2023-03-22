@@ -33,12 +33,6 @@ export const loadGarageAction = () => dispatch => {
 }
 
 export const updateIndexAction = (newIndex) => dispatch => {
-    // if (newIndex < 0) {
-    //     newIndex = 0;
-    // } else if (newIndex >= React.Children.count(children)) {
-    //     newIndex = React.Children.count(children) - 1;
-    // }
-
-    // handle logic in the component
-    // just push the newIndex to the action
+    console.log('hello from updateIndexAction');
+    dispatch({ type: UPDATE_INDEX, payload: newIndex })
 }

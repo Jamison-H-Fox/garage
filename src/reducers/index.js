@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, LOAD_GARAGE } from '../actions';
+import { LOGIN, LOGOUT, LOAD_GARAGE, UPDATE_INDEX } from '../actions';
 
 const initialState = {
     loggedIn: false,
@@ -23,6 +23,11 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 garage: action.payload,
+            }
+        case UPDATE_INDEX:
+            return {
+                ...state,
+                activeIndex: action.payload,
             }
         default:
             return state;

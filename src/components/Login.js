@@ -73,15 +73,20 @@ function Login(props) {
         <StyledSection>
             <h2 className="greeting">Welcome to the Garage!</h2>
             <form id="loginForm" onSubmit={(evt) => login(evt)}> 
-                <input 
+                <input
+                    type='text'
+                    id="username-input" 
                     placeholder="username:"
                     name='username'
+                    value={form.username}
                     onChange={(evt) => handleChange(evt)}
                 />
                 <input
+                    id="password-input"
                     placeholder="password:"
                     name='password'
                     type='password'
+                    value={form.password}
                     onChange={(evt) => handleChange(evt)}
                 />
                 <button onClick={(evt) => login(evt)}>Login</button>

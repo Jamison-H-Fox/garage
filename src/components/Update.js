@@ -88,11 +88,17 @@ const StyledSection = styled.section`
 function Update(props) {
     const redirectToGarage = () => { props.navigate('/garage') }
 
+    const updateCar = () => {
+        console.log('update car button nub')
+    }
+
     return (
         <StyledSection>
             <div className="big-container">
                 <div className="small-container">
                     <form className="car-info">
+                        <p>Test:</p>
+                        <input></input>
                         <p>Make:</p>
                         <input></input>
                         <p>Model:</p>
@@ -110,7 +116,7 @@ function Update(props) {
                     </form>
                 </div>
                 <div className="button-container">
-                    <button>Submit</button>
+                    <button onClick={ () => updateCar() }>Submit</button>
                     <button onClick={ () => redirectToGarage() }>Cancel</button>
                 </div>
             </div>
@@ -120,7 +126,8 @@ function Update(props) {
 
 const mapStateToProps = state => {
     return {
-        garage: state.garage
+        garage: state.garage,
+        activeIndex: state.activeIndex,
     }
 }
 

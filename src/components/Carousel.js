@@ -48,7 +48,7 @@ export const CarouselItem = ({ children, width }) => {
     );
 };
 
-const Carousel = ({ children }) => {
+const Carousel = ({ children, updateIndexAction }) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const updateIndex = (newIndex) => {
@@ -58,6 +58,7 @@ const Carousel = ({ children }) => {
             newIndex = React.Children.count(children) - 1;
         }
 
+        updateIndexAction(newIndex);
         setActiveIndex(newIndex);
     };
 
@@ -83,16 +84,12 @@ const Carousel = ({ children }) => {
                         return (
                             <button
                                 className={`${index === activeIndex ? 'active' : ''}`}
-                                onClick={() => {
-                                    updateIndex(index);
-                                }}
+                                onClick={() => { updateIndex(index) }}
                             >{index + 1}</button>
                         )
                     })}
                     <button
-                        onClick={() => {
-                            updateIndex(activeIndex + 1);
-                        }}
+                        onClick={() => { updateIndex(activeIndex + 1) }}
                     >Next</button>
                 </div>
             </div>
