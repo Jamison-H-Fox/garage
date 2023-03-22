@@ -8,3 +8,4 @@ export { default as Spinner } from './Spinner';
 export { default as Welcome } from './Welcome';
 export { default as Header } from './Header';
 export { default as Carousel } from './Carousel';
+export { default as Delete } from './Delete';

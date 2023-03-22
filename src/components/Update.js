@@ -173,11 +173,11 @@ function Update(props) {
                     </form>
                 </div>
                 <div className="bottom-container">
+                    <h2>Update Car</h2>
                     <div className="button-container">
                         <button onClick={ () => updateCar() }>Submit</button>
                         <button onClick={ () => redirectToGarage() }>Cancel</button>
                     </div>
-                    <h2>Update Car</h2>
                 </div>
             </div>
         </StyledSection>

@@ -182,11 +182,11 @@ function Add(props) {
                     </form>
                 </div>
                 <div className="bottom-container">
+                    <h2>Add New Car</h2>
                     <div className="button-container">
                         <button onClick={ () => addCar() }>Submit</button>
                         <button onClick={ () => redirectToGarage() }>Cancel</button>
                     </div>
-                    <h2>Add New Car</h2>
                 </div>
             </div>
         </StyledSection>

@@ -7,6 +7,7 @@ import {
   Welcome,
   Header,
   Update,
+  Delete,
 } from './components';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/garage' element={<Garage navigate={navigate}/>} />
         <Route path='/add' element={<Add navigate={navigate}/>} />
         <Route path='/update' element={<Update navigate={navigate}/>} />
+        <Route path='/delete' element={<Delete navigate={navigate}/>} />
         <Route path='/logout' element={<Logout navigate={navigate}/>} />
       </Routes>
     </div>

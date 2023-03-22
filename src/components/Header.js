@@ -59,7 +59,7 @@ const StyledSection = styled.section`
     }
 `
 
-function Header(props) { // eslint-disable-line
+function Header(props) {
 
     return (
         <StyledSection>
@@ -71,8 +71,7 @@ function Header(props) { // eslint-disable-line
                     {
                         props.loggedIn ?
                         <>
-                            {/* <NavLink id='welcomeScreen' to='/welcome'>Welcome</NavLink> */}
-                            <NavLink id='addScreen' to='/welcome'>Welcome</NavLink>
+                            <NavLink id='welcomeScreen' to='/welcome'>Welcome</NavLink>
                             <NavLink id='garageScreen' to='/garage'>Garage</NavLink>
                             <NavLink id='logoutScreen' to='/logout'>Logout</NavLink> 
                         </> :

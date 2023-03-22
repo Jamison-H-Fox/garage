@@ -5,14 +5,16 @@ This project is conceived by me (not from a tutorial) and built from scratch to 
 
 ### Front End:
 - Client side routing
-    - [ ] Each page renders appropriately
+    - [x] Each page renders appropriately
 - User interface
     - [ ] Maybe a spinner for loading???
-    - [ ] Login form
+    - [ ] Maybe Message for confirmation, etc???
+    - [x] Login form
     - [ ] Welcome page
-    - [ ] Add new page
-    - [ ] Update page
-    - [ ] Garage page (carousel)
+    - [x] Add new page
+    - [x] Update page
+    - [x] Delete confirmation page
+    - [x] Garage page (carousel)
         - [x] CarCard components in carousel
     - [x] Logout
 - Controlled forms w/ Yup validation
@@ -24,5 +26,12 @@ This project is conceived by me (not from a tutorial) and built from scratch to 
     - [x] Logout confirmation w/ button to login again
     - [x] Login/Logout buttons change to match state
 - Redux store for state
-    - [ ] Store all stuff from axios calls in state
-- Tool tips on hover???
+    - [ ] Actions for api calls
+        - [ ] get all cars
+        - [ ] delete specific car
+        - [ ] update specific car
+        - [ ] add car
+        - [ ] login
+        - [ ] logout
+        - [ ] register new user
+    - [ ] Reducers set res to state

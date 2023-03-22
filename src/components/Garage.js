@@ -47,6 +47,7 @@ function Garage(props) {
 
     const redirectToAdd = () => { props.navigate('/add') };
     const redirectToUpdate = () => { props.navigate('/update') };
+    const redirectToDelete = () => { props.navigate('/delete') };
 
     const addClick = () => {
         redirectToAdd();
@@ -57,7 +58,9 @@ function Garage(props) {
     }
 
     const deleteClick = () => {
-        props.deleteCarAction(props.activeIndex);
+        // maybe render a fixed position Delete over
+        // everything rather than redirect???
+        redirectToDelete();
     }
 
     return (

@@ -10,6 +10,7 @@ export const updateIndexAction = (newIndex) => dispatch => {
 }
 
 export const loginAction = (/* need user info */) => {
+    // axios call to get session info
     console.log('hello from login action')
     return {
         type: LOGIN
@@ -17,6 +18,7 @@ export const loginAction = (/* need user info */) => {
 }
 
 export const logoutAction = (/* need user info */) => {
+    // axios call to destroy session
     console.log('hello from logout action')
     return {
         type: LOGOUT
@@ -30,7 +32,6 @@ export const registerAction = (/* need user info */) => dispatch => {
 }
 
 export const loadGarageAction = () => dispatch => {
-    console.log('hello from load garage action')
     axios.get('https://garage-backend.herokuapp.com/api/cars')
     .then(res => {
         const garage = res.data;
