@@ -52,12 +52,17 @@ const StyledSection = styled.section`
         }
 
         & .error-message {
-            font-weight: bold;
             border-radius: 15px;
             border: 2px red solid;
-            color: red;
             background-color: rgb(255, 207, 207);
             padding: 1.25%;
+            
+            & h2 {
+                font-weight: bold;
+                color: red;
+                font-size: 100%;
+                margin: 0;
+            }
         }
     }
 `
@@ -98,7 +103,7 @@ function Login(props) {
         setFormErrors(name, updatedInfo);
     }
 
-    function setFormErrors(name, value) {
+    const setFormErrors = (name, value) => {
         yup.reach(schema, name).validate(value)
             .then(() => setErrors({ ...errors, [name]: '' }))
             .catch(err => setErrors({ ...errors, [name]: err.errors[0] }))
@@ -141,7 +146,7 @@ function Login(props) {
 
     useEffect (() => {
         schema.isValid(form).then(valid => setDisabled(!valid))
-    }, [form, disabled])
+    }, [form, disabled]);
 
     return (
         <StyledSection>
@@ -173,10 +178,10 @@ function Login(props) {
                         <div
                             className="error-message"
                             style={{
-                            display: visible ? "block" : "none",
-                            position: 'fixed',
-                            top: mouseLocation.y,
-                            left: mouseLocation.x,
+                                display: visible ? "block" : "none",
+                                position: 'fixed',
+                                top: mouseLocation.y,
+                                left: mouseLocation.x,
                             }}
                         >
                             <h2>{errors.username}</h2>

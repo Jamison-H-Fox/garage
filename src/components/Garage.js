@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { loadGarageAction, deleteCarAction } from "../actions";
+import { loadGarageAction, deleteCarAction, updateIndexAction } from "../actions";
 import { CarCard } from "./";
 import Carousel, { CarouselItem } from './Carousel';
 
@@ -42,7 +42,8 @@ const StyledSection = styled.section`
 
 function Garage(props) {
     useEffect(() => {
-        props.loadGarageAction();
+        props.loadGarageAction(/* user_id */);
+        props.updateIndexAction(0)
     }, []) // eslint-disable-line
 
     const redirectToAdd = () => { props.navigate('/add') };
@@ -89,4 +90,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { loadGarageAction, deleteCarAction })(Garage);
+export default connect(mapStateToProps, { loadGarageAction, deleteCarAction, updateIndexAction })(Garage);

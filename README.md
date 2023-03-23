@@ -18,12 +18,12 @@ This project is conceived by me (not from a tutorial) and built from scratch to 
         - [x] CarCard components in carousel
     - [x] Logout
 - Controlled forms w/ Yup validation
-    - [ ] Login form in login page
+    - [x] Login form in login page
     - [ ] Add form in add page
     - [ ] Update form in update page
 - Login and logout features
-    - [ ] Login form visible if not logged in
-    - [x] Logout confirmation w/ button to login again
+    - [ ] All routes except /login protected if not logged in
+    - [x] Logout confirmation with confirm/cancel pushes to login
     - [x] Login/Logout buttons change to match state
 - Redux store for state
     - [ ] Actions for api calls

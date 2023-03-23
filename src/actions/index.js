@@ -37,7 +37,7 @@ export const registerAction = (userCreds) => dispatch => {
     dispatch(loginAction(userCreds));
 }
 
-export const loadGarageAction = () => dispatch => {
+export const loadGarageAction = (/* user_id */) => dispatch => {
     axios.get('https://garage-backend.herokuapp.com/api/cars')
     .then(res => {
         const garage = res.data;

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { addCarAction } from "../actions";
+import * as yup from 'yup';
 
 const StyledSection = styled.section`
     // & * {
@@ -54,14 +55,15 @@ const StyledSection = styled.section`
         align-items: center;
 
         & .button-container {
-            margin-top: 10%;
-            width: 33%;
+            margin: 5%;
+            width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: center;
+            align-items: center;
     
             & button {
-                margin: 0 5% 0 5%;
+                margin: 1% 5% 1% 5%;
             }
         }
 
@@ -69,6 +71,20 @@ const StyledSection = styled.section`
             font-size: 1.5rem;
             color: white;
             margin-top: 5%;
+        }
+
+        & .error-message {
+            border-radius: 15px;
+            border: 2px red solid;
+            background-color: rgb(255, 207, 207);
+            padding: 1.25%;
+            
+            & h2 {
+                font-weight: bold;
+                color: red;
+                font-size: 100%;
+                margin: 0;
+            }
         }
     }
 
@@ -99,7 +115,33 @@ const StyledSection = styled.section`
     }
 `
 
+const schema = yup.object().shape({
+    make: yup.string().required('make is required'),
+    model: yup.string().required('model is required'),
+    trim: yup.string().required('trim is required'),
+    img_url: yup.string().required('image url is required'),
+    price: yup.number(),
+    build_url: yup.string(),
+})
+
 function Add(props) {
+    // tooltip hover-over helpers //
+    const [mouseLocation, setMouseLocation] = useState(0);
+    const [visible, setVisible] = useState(false);
+
+    const handleHover = (evt) => {
+        setMouseLocation({
+            x: evt.pageX,
+            y: evt.pageY,
+        });
+        setVisible(true);
+    };
+    
+    const handleNoHover = () => {
+        setVisible(false);
+    };
+    ////////////////////////////////
+
     const [form, setForm] = useState({
         car_id: null,
         user_id: null,
@@ -109,7 +151,45 @@ function Add(props) {
         img_url: '',
         price: null,
         build_url: '',
-    })
+    });
+    const [errors, setErrors] = useState({
+        make: '',
+        model: '',
+        trim: '',
+        img_url: '',
+        price: '',
+        build_url: '',
+    });
+    const [disabled, setDisabled] = useState(true);
+
+    const handleChange = (evt) => {
+        const { name, type, value, checked } = evt.target;
+        const updatedInfo = type === 'checkbox' ? checked : value;
+        setForm({ ...form, [name]: updatedInfo });
+        setFormErrors(name, updatedInfo);
+    }
+
+    const setFormErrors = (name, value) => {
+        yup.reach(schema, name).validate(value)
+            .then(() => setErrors({ ...errors, [name]: '' }))
+            .catch(err => setErrors({ ...errors, [name]: err.errors[0] }))
+    }
+
+    const errorChecker = () => {
+        const reference = {
+            make: '',
+            model: '',
+            trim: '',
+            img_url: '',
+            price: '',
+            build_url: '',
+        };
+        if(JSON.stringify(errors) !== JSON.stringify(reference)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     const redirectToGarage = () => { props.navigate('/garage') }
 
@@ -118,11 +198,9 @@ function Add(props) {
         redirectToGarage();
     }
 
-    const handleChange = (evt) => {
-        const { name, type, value, checked } = evt.target;
-        const updatedInfo = type === 'checkbox' ? checked : value;
-        setForm({ ...form, [name]: updatedInfo })
-    }
+    useEffect (() => {
+        schema.isValid(form).then(valid => setDisabled(!valid))
+    }, [form, disabled]);
 
     return (
         <StyledSection>
@@ -183,8 +261,31 @@ function Add(props) {
                 </div>
                 <div className="bottom-container">
                     <h2>Add New Car</h2>
-                    <div className="button-container">
-                        <button onClick={ () => addCar() }>Submit</button>
+                    <div 
+                        className="button-container"
+                        onMouseEnter={(evt) => handleHover(evt)}
+                        onMouseLeave={handleNoHover}
+                    >
+                        {
+                            errorChecker() ?
+                            <div 
+                                className="error-message"
+                                style={{
+                                    display: visible ? 'block' : 'none',
+                                    position: 'fixed',
+                                    top: mouseLocation.y,
+                                    left: mouseLocation.x,
+                                }}
+                            >
+                                <h2>{errors.make}</h2>
+                                <h2>{errors.model}</h2>
+                                <h2>{errors.trim}</h2>
+                                <h2>{errors.img_url}</h2>
+                                <h2>{errors.price}</h2>
+                            </div> :
+                            <></>
+                        }
+                        <button disabled={disabled} onClick={ () => addCar() }>Submit</button>
                         <button onClick={ () => redirectToGarage() }>Cancel</button>
                     </div>
                 </div>
