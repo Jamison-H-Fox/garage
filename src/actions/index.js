@@ -58,14 +58,14 @@ export const updateCarAction = (updates) => dispatch => {
     dispatch(loadGarageAction());
 }
 
-export const deleteCarAction = (activeIndex) => dispatch => {
-    // axios call to delete car w/ car_id = activeIndex + 1 from db
-    console.log('hello from delete car action');
-    dispatch(loadGarageAction());
-}
-
 export const addCarAction = (details) => dispatch => {
     // axios call to add car w/ provided details
     console.log('hello from add car action');
+    dispatch(loadGarageAction());
+}
+
+export const deleteCarAction = (activeIndex) => dispatch => {
+    // axios call to delete car w/ car_id = activeIndex + 1 from db
+    console.log('hello from delete car action');
     dispatch(loadGarageAction());
 }

@@ -27,11 +27,13 @@ This project is conceived by me (not from a tutorial) and built from scratch to 
     - [x] Login/Logout buttons change to match state
 - Redux store for state
     - [ ] Actions for api calls
-        - [ ] get all cars
-        - [ ] delete specific car
-        - [ ] update specific car
-        - [ ] add car
+        - [x] update current index in carousel
+        - [x] set errors for validation
         - [ ] login
         - [ ] logout
         - [ ] register new user
+        - [ ] get all cars matching specific user
+        - [ ] update specific car
+        - [ ] add car
+        - [ ] delete specific car
     - [ ] Reducers set res to state
