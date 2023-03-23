@@ -19,8 +19,8 @@ This project is conceived by me (not from a tutorial) and built from scratch to 
     - [x] Logout
 - Controlled forms w/ Yup validation
     - [x] Login form in login page
-    - [ ] Add form in add page
-    - [ ] Update form in update page
+    - [x] Add form in add page
+    - [x] Update form in update page
 - Login and logout features
     - [ ] All routes except /login protected if not logged in
     - [x] Logout confirmation with confirm/cancel pushes to login
