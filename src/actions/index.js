@@ -4,14 +4,14 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const LOAD_GARAGE = 'LOAD_GARAGE';
 export const UPDATE_INDEX = 'UPDATE_INDEX';
-export const SET_ERRORS = 'SET_ERRORS';
+export const SET_SPINNER_ON = 'SET_SPINNER_ON';
+
+export const setSpinnerOnAction = (spinnerToggle) => dispatch => {
+    dispatch({ type: SET_SPINNER_ON, payload: spinnerToggle })
+}
 
 export const updateIndexAction = (newIndex) => dispatch => {
     dispatch({ type: UPDATE_INDEX, payload: newIndex });
-}
-
-export const setErrorsAction = (errors) => dispatch => {
-    dispatch({ type: SET_ERRORS, payload: errors });
 }
 
 export const loginAction = (userCreds) => {
@@ -38,10 +38,12 @@ export const registerAction = (userCreds) => dispatch => {
 }
 
 export const loadGarageAction = (/* user_id */) => dispatch => {
+    setSpinnerOnAction(true)
     axios.get('https://garage-backend.herokuapp.com/api/cars')
     .then(res => {
         const garage = res.data;
-        dispatch({ type: LOAD_GARAGE, payload: garage })        
+        dispatch({ type: LOAD_GARAGE, payload: garage })
+        setSpinnerOnAction(false)     
     })
     .catch(err => {
         console.error(err)
