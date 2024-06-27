@@ -26,6 +26,8 @@ export const loginAction = (userCreds) => {
     }
 }
 
+console.log('test and stuff')
+
 export const logoutAction = (/* need user info */) => {
     // axios call to destroy session
     console.log('hello from logout action')
