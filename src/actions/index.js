@@ -6,6 +6,9 @@ export const LOAD_GARAGE = 'LOAD_GARAGE';
 export const UPDATE_INDEX = 'UPDATE_INDEX';
 export const SET_SPINNER_ON = 'SET_SPINNER_ON';
 
+const heroku = 'https://garage-backend.herokuapp.com/api/cars';
+const localHost = 'http://localhost:9000/api/cars';
+
 export const setSpinnerOnAction = (spinnerToggle) => dispatch => {
     dispatch({ type: SET_SPINNER_ON, payload: spinnerToggle })
 }
@@ -39,7 +42,7 @@ export const registerAction = (userCreds) => dispatch => {
 
 export const loadGarageAction = (/* user_id */) => dispatch => {
     setSpinnerOnAction(true)
-    axios.get('https://garage-backend.herokuapp.com/api/cars')
+    axios.get(localHost)
     .then(res => {
         const garage = res.data;
         dispatch({ type: LOAD_GARAGE, payload: garage })

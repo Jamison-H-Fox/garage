@@ -29,7 +29,7 @@ This project is conceived by me (not from a tutorial) and built from scratch to 
     - [ ] Actions for api calls
         - [x] update current index in carousel
         - [x] set errors for validation
-        - [ ] login
+        - [x] login
         - [ ] logout
         - [ ] register new user
         - [ ] get all cars matching specific user
